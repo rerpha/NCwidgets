@@ -74,15 +74,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.addWindow = QtWidgets.QDialog()
-        self.addWindow.ui = Ui_AddComponentDialog()
-        self.addWindow.ui.setupUi(self.addWindow)
-
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def show_add_component_window(self):
-        self.addWindow.exec_()
-        self.addWindow.show()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

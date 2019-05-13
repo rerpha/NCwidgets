@@ -21,6 +21,13 @@ class MainWindow(Ui_MainWindow):
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
 
+        self.addWindow = QDialog()
+        self.addWindow.ui = AddComponentDialog()
+        self.addWindow.ui.setupUi(self.addWindow)
+
+    def show_add_component_window(self):
+        self.addWindow.show()
+
 
 class AddComponentDialog(Ui_AddComponentDialog):
     def __init__(self):
