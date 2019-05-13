@@ -103,6 +103,7 @@ class GeometryView(QWidget):
     def __init__(self):
         super().__init__()
         self.view = Qt3DWindow()
+        self.window = self.createWindowContainer(self.view)
         camera = self.view.camera()
         camera.setPosition(QVector3D(0, 0, 0))
         camera.setViewCenter(QVector3D(0.0, 0.0, 0.0))
