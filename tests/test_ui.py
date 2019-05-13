@@ -23,4 +23,3 @@ def test_add_component_window_title(qtbot):
     assert main.addWindow.isVisible()
 
     main.addWindow.close()
-
