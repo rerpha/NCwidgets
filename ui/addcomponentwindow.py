@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'addcomponentwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.1
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -18,13 +18,9 @@ class Ui_AddComponentDialog(object):
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
         self.comboBox = QtWidgets.QComboBox(AddComponentDialog)
+        self.comboBox.setEditable(False)
+        self.comboBox.setMaxVisibleItems(40)
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.comboBox)
         self.label_2 = QtWidgets.QLabel(AddComponentDialog)
         self.label_2.setObjectName("label_2")
@@ -65,6 +61,7 @@ class Ui_AddComponentDialog(object):
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.SpanningRole, self.buttonBox)
 
         self.retranslateUi(AddComponentDialog)
+        self.comboBox.setCurrentIndex(-1)
         self.buttonBox.accepted.connect(AddComponentDialog.accept)
         self.buttonBox.rejected.connect(AddComponentDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(AddComponentDialog)
@@ -72,12 +69,6 @@ class Ui_AddComponentDialog(object):
     def retranslateUi(self, AddComponentDialog):
         _translate = QtCore.QCoreApplication.translate
         AddComponentDialog.setWindowTitle(_translate("AddComponentDialog", "Dialog"))
-        self.comboBox.setItemText(0, _translate("AddComponentDialog", "Detector"))
-        self.comboBox.setItemText(1, _translate("AddComponentDialog", "Monitor"))
-        self.comboBox.setItemText(2, _translate("AddComponentDialog", "Source"))
-        self.comboBox.setItemText(3, _translate("AddComponentDialog", "Slit"))
-        self.comboBox.setItemText(4, _translate("AddComponentDialog", "Moderator"))
-        self.comboBox.setItemText(5, _translate("AddComponentDialog", "Disk chopper"))
         self.label_2.setText(_translate("AddComponentDialog", "Geometry type: "))
         self.comboBox_2.setItemText(0, _translate("AddComponentDialog", "Mesh"))
         self.comboBox_2.setItemText(1, _translate("AddComponentDialog", "Cylinder"))

@@ -1,14 +1,14 @@
 import sys
-
+import h5py
 from PyQt5.QtGui import QVector3D
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QWidget
 from PyQt5 import QtCore
 from ui.mainwindow import Ui_MainWindow
 from ui.addcomponentwindow import Ui_AddComponentDialog
-import h5py
 from uuid import uuid4
 from PyQt5.Qt3DExtras import Qt3DWindow, QFirstPersonCameraController
 from PyQt5.Qt3DCore import QEntity
+from component_names import component_names
 
 NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
 
@@ -120,6 +120,10 @@ class AddComponentDialog(Ui_AddComponentDialog):
 
     def setupUi(self, add_component_window):
         super().setupUi(add_component_window)
+        index = 0
+        for component in component_names.items():
+            self.comboBox.insertItem(index, component[0])
+            index += 1
 
 
 if __name__ == "__main__":
