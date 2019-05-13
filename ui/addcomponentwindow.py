@@ -65,6 +65,8 @@ class Ui_AddComponentDialog(object):
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.SpanningRole, self.buttonBox)
 
         self.retranslateUi(AddComponentDialog)
+        self.buttonBox.accepted.connect(AddComponentDialog.accept)
+        self.buttonBox.rejected.connect(AddComponentDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(AddComponentDialog)
 
     def retranslateUi(self, AddComponentDialog):
