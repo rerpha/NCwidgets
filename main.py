@@ -10,7 +10,7 @@ NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
 
 
 def set_up_in_memory_nexus_file():
-    return h5py.File(uuid4(), mode="w", driver="core", backing_store=False)
+    return h5py.File(str(uuid4()), mode="w", driver="core", backing_store=False)
 
 
 class MainWindow(Ui_MainWindow):
