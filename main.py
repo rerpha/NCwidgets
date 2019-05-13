@@ -120,10 +120,19 @@ class AddComponentDialog(Ui_AddComponentDialog):
 
     def setupUi(self, add_component_window):
         super().setupUi(add_component_window)
+        self.buttonBox.accepted.connect(self.accepted)
+
         index = 0
         for component in component_names.items():
             self.comboBox.insertItem(index, component[0])
             index += 1
+
+    def accepted(self):
+        print(f"Component selected is: {self.comboBox.currentText()}")
+        print(f"Shape type selected is: {self.comboBox_2.currentText()}")
+        print(f"Pixel data type selected is: {self.comboBox_3.currentText()}")
+        # create the next window here and pass stuff in
+        pass
 
 
 if __name__ == "__main__":
