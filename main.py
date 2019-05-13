@@ -4,6 +4,7 @@ from PyQt5.QtGui import QVector3D
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QWidget
 from PyQt5 import QtCore
 from ui.mainwindow import Ui_MainWindow
+from ui.componentdetails import Ui_ComponentDetailsDialog
 from ui.addcomponentwindow import Ui_AddComponentDialog
 from uuid import uuid4
 from PyQt5.Qt3DExtras import Qt3DWindow, QFirstPersonCameraController
@@ -114,6 +115,22 @@ class GeometryView(QWidget):
         self.view.setRootEntity(self.rootEntity)
 
 
+class ComponentDetailsDialog(Ui_ComponentDetailsDialog):
+    def __init__(self):
+        super().__init__()
+        self.component_name = False
+        self.geometry_type = False
+        self.pixel_type = False
+
+    def setupUi(self, ComponentDetailsDialog):
+        super().setupUi(ComponentDetailsDialog)
+
+    def create_delegates(self, component_name, geometry_type, pixel_type):
+        self.component_name = component_name
+        self.geometry_type = geometry_type
+        self.pixel_type = pixel_type
+
+
 class AddComponentDialog(Ui_AddComponentDialog):
     def __init__(self):
         super().__init__()
@@ -123,6 +140,9 @@ class AddComponentDialog(Ui_AddComponentDialog):
         self.buttonBox.accepted.connect(self.accepted)
 
         self.populate_components_box()
+        self.details = QDialog()
+
+        self.details.ui = ComponentDetailsDialog()
 
     def populate_components_box(self):
         index = 0
@@ -135,7 +155,13 @@ class AddComponentDialog(Ui_AddComponentDialog):
         print(f"Shape type selected is: {self.comboBox_2.currentText()}")
         print(f"Pixel data type selected is: {self.comboBox_3.currentText()}")
         # create the next window here and pass stuff in
-        pass
+
+        self.details.ui.create_delegates(
+            self.comboBox.currentText(),
+            self.comboBox_2.currentText(),
+            self.comboBox_3.currentText(),
+        )
+        self.details.show()
 
 
 if __name__ == "__main__":

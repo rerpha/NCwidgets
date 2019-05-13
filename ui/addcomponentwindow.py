@@ -68,7 +68,7 @@ class Ui_AddComponentDialog(object):
 
     def retranslateUi(self, AddComponentDialog):
         _translate = QtCore.QCoreApplication.translate
-        AddComponentDialog.setWindowTitle(_translate("AddComponentDialog", "Dialog"))
+        AddComponentDialog.setWindowTitle(_translate("AddComponentDialog", "Add Component"))
         self.label_2.setText(_translate("AddComponentDialog", "Geometry type: "))
         self.comboBox_2.setItemText(0, _translate("AddComponentDialog", "Mesh"))
         self.comboBox_2.setItemText(1, _translate("AddComponentDialog", "Cylinder"))
