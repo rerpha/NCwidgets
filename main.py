@@ -1,10 +1,14 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
+
+from PyQt5.QtGui import QVector3D
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QWidget
 from PyQt5 import QtCore
 from ui.mainwindow import Ui_MainWindow
 from ui.addcomponentwindow import Ui_AddComponentDialog
 import h5py
 from uuid import uuid4
+from PyQt5.Qt3DExtras import Qt3DWindow, QFirstPersonCameraController
+from PyQt5.Qt3DCore import QEntity
 
 NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
 
@@ -26,6 +30,8 @@ class MainWindow(Ui_MainWindow):
         self.addWindow = QDialog()
         self.addWindow.ui = AddComponentDialog()
         self.addWindow.ui.setupUi(self.addWindow)
+
+        self.widget.ui = GeometryView()
 
         self.pushButton.clicked.connect(self.show_add_component_window)
         self.actionExport_to_NeXus_file.triggered.connect(self.save_to_nexus_file)
@@ -79,9 +85,24 @@ class MainWindow(Ui_MainWindow):
             self.nexus_file = h5py.File(
                 fileName, mode="r", backing_store=False, driver="core"
             )
+            print("NeXus file loaded")
 
     def show_add_component_window(self):
         self.addWindow.exec()
+
+
+class GeometryView(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.view = Qt3DWindow()
+        camera = self.view.camera()
+        camera.setPosition(QVector3D(0, 0, 0))
+        camera.setViewCenter(QVector3D(0.0, 0.0, 0.0))
+
+        self.rootEntity = QEntity()
+        self.camController = QFirstPersonCameraController(self.rootEntity)
+        self.camController.setCamera(camera)
+        self.view.setRootEntity(self.rootEntity)
 
 
 class AddComponentDialog(Ui_AddComponentDialog):
