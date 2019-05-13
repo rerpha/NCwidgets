@@ -3,3 +3,4 @@ pyqt5-stubs
 black
 pytest
 pytest-qt
+h5py

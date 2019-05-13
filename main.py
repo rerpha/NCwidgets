@@ -3,13 +3,20 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
 from PyQt5 import QtCore
 from ui.mainwindow import Ui_MainWindow
 from ui.addcomponentwindow import Ui_AddComponentDialog
+import h5py
+from uuid import uuid4
 
 NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
+
+
+def set_up_in_memory_nexus_file():
+    return h5py.File(uuid4(), mode="w", driver="core", backing_store=False)
 
 
 class MainWindow(Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.nexus_file = set_up_in_memory_nexus_file()
 
     file_dialog_native = QFileDialog.DontUseNativeDialog
 
@@ -38,6 +45,9 @@ class MainWindow(Ui_MainWindow):
         )
         if fileName:
             print(fileName)
+            file = h5py.File(fileName, mode="x")
+            self.nexus_file.copy(source="/", dest=file)
+            print("Saved to NeXus file")
 
     def save_to_filewriter_json(self):
         options = QFileDialog.Options()
@@ -65,6 +75,9 @@ class MainWindow(Ui_MainWindow):
         )
         if fileName:
             print(fileName)
+            self.nexus_file = h5py.File(
+                fileName, mode="r", backing_store=False, driver="core"
+            )
 
     def show_add_component_window(self):
         self.addWindow.exec()
