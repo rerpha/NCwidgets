@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>NeXus Constructor</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -35,9 +35,6 @@
     </item>
     <item row="1" column="0">
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="1">
-       <widget class="QTreeWidget" name="treeWidget"/>
-      </item>
       <item row="0" column="4">
        <widget class="QListWidget" name="listWidget"/>
       </item>
@@ -50,6 +47,9 @@
          </size>
         </property>
        </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QTreeWidget" name="treeWidget"/>
       </item>
      </layout>
     </item>

@@ -28,9 +28,6 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
-        self.treeWidget = QtWidgets.QTreeWidget(self.centralwidget)
-        self.treeWidget.setObjectName("treeWidget")
-        self.gridLayout.addWidget(self.treeWidget, 0, 1, 1, 1)
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.listWidget.setObjectName("listWidget")
         self.gridLayout.addWidget(self.listWidget, 0, 4, 1, 1)
@@ -38,6 +35,9 @@ class Ui_MainWindow(object):
         self.openGLWidget.setMinimumSize(QtCore.QSize(400, 300))
         self.openGLWidget.setObjectName("openGLWidget")
         self.gridLayout.addWidget(self.openGLWidget, 0, 2, 1, 1)
+        self.treeWidget = QtWidgets.QTreeWidget(self.centralwidget)
+        self.treeWidget.setObjectName("treeWidget")
+        self.gridLayout.addWidget(self.treeWidget, 0, 1, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -60,9 +60,7 @@ class Ui_MainWindow(object):
         self.actionExport_to_NeXus_file = QtWidgets.QAction(MainWindow)
         self.actionExport_to_NeXus_file.setObjectName("actionExport_to_NeXus_file")
         self.actionExport_to_Filewriter_JSON = QtWidgets.QAction(MainWindow)
-        self.actionExport_to_Filewriter_JSON.setObjectName(
-            "actionExport_to_Filewriter_JSON"
-        )
+        self.actionExport_to_Filewriter_JSON.setObjectName("actionExport_to_Filewriter_JSON")
         self.menuFile.addAction(self.actionOpen_NeXus_file)
         self.menuFile.addAction(self.actionExport_to_NeXus_file)
         self.menuFile.addAction(self.actionExport_to_Filewriter_JSON)
@@ -72,25 +70,19 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuJSON.menuAction())
 
         self.retranslateUi(MainWindow)
-
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "NeXus Constructor"))
         self.label.setText(_translate("MainWindow", "NeXus file structure"))
         self.pushButton.setText(_translate("MainWindow", "Add component"))
-        self.pushButton.clicked.connect(self.show_add_component_window)
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuJSON.setTitle(_translate("MainWindow", "JSON"))
-        self.actionShow_Filewriter_JSON.setText(
-            _translate("MainWindow", "Show Filewriter JSON")
-        )
+        self.actionShow_Filewriter_JSON.setText(_translate("MainWindow", "Show Filewriter JSON"))
         self.actionHide_JSON_Pane.setText(_translate("MainWindow", "Hide JSON Pane"))
         self.actionOpen_NeXus_file.setText(_translate("MainWindow", "Open NeXus file"))
-        self.actionExport_to_NeXus_file.setText(
-            _translate("MainWindow", "Export to NeXus file")
-        )
-        self.actionExport_to_Filewriter_JSON.setText(
-            _translate("MainWindow", "Export to Filewriter JSON")
-        )
+        self.actionExport_to_NeXus_file.setText(_translate("MainWindow", "Export to NeXus file"))
+        self.actionExport_to_Filewriter_JSON.setText(_translate("MainWindow", "Export to Filewriter JSON"))
+
+
