@@ -11,3 +11,5 @@ black
 pytest
 pytest-qt
 
+# Freezing + Installers
+fbs
