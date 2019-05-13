@@ -141,8 +141,8 @@ class AddComponentDialog(Ui_AddComponentDialog):
 
         self.populate_components_box()
         self.details = QDialog()
-
         self.details.ui = ComponentDetailsDialog()
+        self.details.ui.setupUi(self.details)
 
     def populate_components_box(self):
         index = 0
@@ -161,7 +161,7 @@ class AddComponentDialog(Ui_AddComponentDialog):
             self.comboBox_2.currentText(),
             self.comboBox_3.currentText(),
         )
-        self.details.show()
+        self.details.exec()
 
 
 if __name__ == "__main__":
