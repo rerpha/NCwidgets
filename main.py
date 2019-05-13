@@ -122,6 +122,9 @@ class AddComponentDialog(Ui_AddComponentDialog):
         super().setupUi(add_component_window)
         self.buttonBox.accepted.connect(self.accepted)
 
+        self.populate_components_box()
+
+    def populate_components_box(self):
         index = 0
         for component in component_names.items():
             self.comboBox.insertItem(index, component[0])
