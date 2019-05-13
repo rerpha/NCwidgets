@@ -1,15 +1,6 @@
 import sys
-
-from PyQt5.QtWidgets import (
-    QApplication,
-    QLabel,
-    QMainWindow,
-    QAction,
-    QPushButton,
-    QWidget,
-    QDialog,
-)
-from PyQt5 import uic, QtCore
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
+from PyQt5 import QtCore
 from ui.mainwindow import Ui_MainWindow
 from ui.addcomponentwindow import Ui_AddComponentDialog
 
