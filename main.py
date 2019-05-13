@@ -22,6 +22,9 @@ class MainWindow(Ui_MainWindow):
 
         self.actionExport_to_NeXus_file.triggered.connect(self.save_to_nexus_file)
         self.actionOpen_NeXus_file.triggered.connect(self.open_nexus_file)
+        self.actionExport_to_Filewriter_JSON.triggered.connect(
+            self.save_to_filewriter_json
+        )
 
     def save_to_nexus_file(self):
         options = QFileDialog.Options()
@@ -31,6 +34,19 @@ class MainWindow(Ui_MainWindow):
             caption="QFileDialog.getSaveFileName()",
             directory="",
             filter=f"{NEXUS_FILE_TYPES};;All Files (*)",
+            options=options,
+        )
+        if fileName:
+            print(fileName)
+
+    def save_to_filewriter_json(self):
+        options = QFileDialog.Options()
+        options |= self.file_dialog_native
+        fileName, _ = QFileDialog.getSaveFileName(
+            parent=None,
+            caption="QFileDialog.getSaveFileName()",
+            directory="",
+            filter="JSON Files (*.json);;All Files (*)",
             options=options,
         )
         if fileName:
