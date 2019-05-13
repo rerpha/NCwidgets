@@ -30,14 +30,15 @@ class Ui_MainWindow(object):
         self.gridLayout.setObjectName("gridLayout")
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.listWidget.setObjectName("listWidget")
-        self.gridLayout.addWidget(self.listWidget, 0, 4, 1, 1)
-        self.openGLWidget = QtWidgets.QOpenGLWidget(self.centralwidget)
-        self.openGLWidget.setMinimumSize(QtCore.QSize(400, 300))
-        self.openGLWidget.setObjectName("openGLWidget")
-        self.gridLayout.addWidget(self.openGLWidget, 0, 2, 1, 1)
+        self.gridLayout.addWidget(self.listWidget, 0, 3, 1, 1)
         self.treeWidget = QtWidgets.QTreeWidget(self.centralwidget)
         self.treeWidget.setObjectName("treeWidget")
         self.gridLayout.addWidget(self.treeWidget, 0, 1, 1, 1)
+        self.quickWidget = QtQuickWidgets.QQuickWidget(self.centralwidget)
+        self.quickWidget.setMinimumSize(QtCore.QSize(600, 400))
+        self.quickWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.quickWidget.setObjectName("quickWidget")
+        self.gridLayout.addWidget(self.quickWidget, 0, 2, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -86,3 +87,4 @@ class Ui_MainWindow(object):
         self.actionExport_to_Filewriter_JSON.setText(_translate("MainWindow", "Export to Filewriter JSON"))
 
 
+from PyQt5 import QtQuickWidgets
