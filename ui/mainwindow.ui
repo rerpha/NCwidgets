@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1109</width>
+    <height>590</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>NeXus file structure</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Add component</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QTreeWidget" name="treeWidget"/>
+      </item>
+      <item row="0" column="4">
+       <widget class="QListWidget" name="listWidget"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QOpenGLWidget" name="openGLWidget">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>300</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1109</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_NeXus_file"/>
+    <addaction name="actionExport_to_NeXus_file"/>
+    <addaction name="actionExport_to_Filewriter_JSON"/>
+   </widget>
+   <widget class="QMenu" name="menuJSON">
+    <property name="title">
+     <string>JSON</string>
+    </property>
+    <addaction name="actionShow_Filewriter_JSON"/>
+    <addaction name="actionHide_JSON_Pane"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuJSON"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionShow_Filewriter_JSON">
+   <property name="text">
+    <string>Show Filewriter JSON</string>
+   </property>
+  </action>
+  <action name="actionHide_JSON_Pane">
+   <property name="text">
+    <string>Hide JSON Pane</string>
+   </property>
+  </action>
+  <action name="actionOpen_NeXus_file">
+   <property name="text">
+    <string>Open NeXus file</string>
+   </property>
+  </action>
+  <action name="actionExport_to_NeXus_file">
+   <property name="text">
+    <string>Export to NeXus file</string>
+   </property>
+  </action>
+  <action name="actionExport_to_Filewriter_JSON">
+   <property name="text">
+    <string>Export to Filewriter JSON</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
