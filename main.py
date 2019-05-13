@@ -124,11 +124,23 @@ class ComponentDetailsDialog(Ui_ComponentDetailsDialog):
 
     def setupUi(self, ComponentDetailsDialog):
         super().setupUi(ComponentDetailsDialog)
+        self.buttonBox.rejected.connect(self.set_defaults)
+        self.buttonBox.accepted.connect(self.add_component)
 
     def create_delegates(self, component_name, geometry_type, pixel_type):
         self.component_name = component_name
         self.geometry_type = geometry_type
         self.pixel_type = pixel_type
+        if self.geometry_type != "Mesh":
+            self.geometryfilelabel.setVisible(False)
+            self.geometryfileform.setVisible(False)
+            self.geometryfilebrowse.setVisible(False)
+
+    def set_defaults(self):
+        pass
+
+    def add_component(self):
+        pass
 
 
 class AddComponentDialog(Ui_AddComponentDialog):
