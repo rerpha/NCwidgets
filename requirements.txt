@@ -1,7 +1,12 @@
-pyqt5==5.12.2
-pyqt5-stubs
+PyQt5==5.12.2
+PyQt5-stubs
+PyQt3D
+h5py
+
+# Formatting/linting
 black
+
+# Testing
 pytest
 pytest-qt
-h5py
-PyQt3D
+
