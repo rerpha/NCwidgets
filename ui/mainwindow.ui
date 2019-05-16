@@ -60,7 +60,7 @@
         </property>
         <property name="source">
          <url>
-          <string>file:///home/jack/code/scratch/pyqt5nc/view.qml</string>
+          <string>file:./view.qml</string>
          </url>
         </property>
        </widget>

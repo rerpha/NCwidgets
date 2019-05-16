@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
         self.quickWidget = QtQuickWidgets.QQuickWidget(self.centralwidget)
         self.quickWidget.setMinimumSize(QtCore.QSize(500, 0))
         self.quickWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.quickWidget.setSource(QtCore.QUrl("file:///home/jack/code/scratch/pyqt5nc/view.qml"))
+        self.quickWidget.setSource(QtCore.QUrl("file:./view.qml"))
         self.quickWidget.setObjectName("quickWidget")
         self.gridLayout.addWidget(self.quickWidget, 0, 2, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 1, 0, 1, 1)
