@@ -141,8 +141,9 @@ class ComponentDetailsDialog(Ui_ComponentDetailsDialog):
         self.GeometryFileBox.setVisible(True)
 
     def add_component(self):
-        component_name = str(self.lineEdit_2.text())
+        component_name = str(self.componentNameField.text())
         self.entry_group.create_group(name=component_name)
+        # TODO: close the dialog
 
 
 class AddComponentDialog(Ui_AddComponentDialog):
