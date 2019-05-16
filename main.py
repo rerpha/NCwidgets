@@ -1,6 +1,8 @@
 import sys
 import h5py
+from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QVector3D
+from PyQt5.QtQuickWidgets import QQuickWidget
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QWidget
 from PyQt5 import QtCore
 from ui.mainwindow import Ui_MainWindow
@@ -31,8 +33,6 @@ class MainWindow(Ui_MainWindow):
         self.addWindow = QDialog()
         self.addWindow.ui = AddComponentDialog()
         self.addWindow.ui.setupUi(self.addWindow)
-
-        self.widget.ui = GeometryView()
 
         self.pushButton.clicked.connect(self.show_add_component_window)
         self.actionExport_to_NeXus_file.triggered.connect(self.save_to_nexus_file)
@@ -131,10 +131,10 @@ class ComponentDetailsDialog(Ui_ComponentDetailsDialog):
         self.component_name = component_name
         self.geometry_type = geometry_type
         self.pixel_type = pixel_type
-        if self.geometry_type != "Mesh":
-            self.geometryfilelabel.setVisible(False)
-            self.geometryfileform.setVisible(False)
-            self.geometryfilebrowse.setVisible(False)
+        if self.geometry_type == "Mesh":
+            self.GeometryFileBox.setVisible(True)
+        if self.geometry_type == "Cylinder":
+            self.CylinderGeometryBox.setVisible(True)
 
     def set_defaults(self):
         pass
