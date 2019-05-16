@@ -163,19 +163,16 @@ class AddComponentDialog(Ui_AddComponentDialog):
     def populate_components_box(self):
         index = 0
         for component in component_names.items():
-            self.comboBox.insertItem(index, component[0])
+            self.ComponentTypeComboBox.insertItem(index, component[0])
             index += 1
 
     def accepted(self):
-        print(f"Component selected is: {self.comboBox.currentText()}")
-        print(f"Shape type selected is: {self.comboBox_2.currentText()}")
-        print(f"Pixel data type selected is: {self.comboBox_3.currentText()}")
         # create the next window here and pass stuff in
 
         self.details.ui.create_delegates(
-            self.comboBox.currentText(),
-            self.comboBox_2.currentText(),
-            self.comboBox_3.currentText(),
+            self.ComponentTypeComboBox.currentText(),
+            self.GeometryTypeComboBox.currentText(),
+            self.PixelTypeComboBox.currentText(),
         )
         self.details.exec()
 
