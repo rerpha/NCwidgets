@@ -87,8 +87,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "NeXus Constructor"))
         self.pushButton.setText(_translate("MainWindow", "Add component"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Tab 1"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "NeXus Geometry"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Transformations?"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionShow_Filewriter_JSON.setText(_translate("MainWindow", "Show Filewriter JSON"))
         self.actionHide_JSON_Pane.setText(_translate("MainWindow", "Hide JSON Pane"))
