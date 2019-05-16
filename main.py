@@ -24,6 +24,8 @@ class MainWindow(Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.nexus_file = set_up_in_memory_nexus_file()
+        self.entry_group = self.nexus_file.create_group("entry")
+        self.entry_group.attrs["NX_class"] = "NXentry"
 
     file_dialog_native = QFileDialog.DontUseNativeDialog
 
@@ -31,7 +33,7 @@ class MainWindow(Ui_MainWindow):
         super().setupUi(main_window)
 
         self.addWindow = QDialog()
-        self.addWindow.ui = AddComponentDialog()
+        self.addWindow.ui = AddComponentDialog(self.entry_group)
         self.addWindow.ui.setupUi(self.addWindow)
 
         self.pushButton.clicked.connect(self.show_add_component_window)
@@ -62,8 +64,11 @@ class MainWindow(Ui_MainWindow):
         if fileName:
             print(fileName)
             file = h5py.File(fileName, mode="x")
-            self.nexus_file.copy(source="/", dest=file)
-            print("Saved to NeXus file")
+            try:
+                file.copy(source=self.nexus_file["/entry/"], dest="/entry/")
+                print("Saved to NeXus file")
+            except ValueError as e:
+                print(f"File writing failed: {e}")
 
     def save_to_filewriter_json(self):
         options = QFileDialog.Options()
@@ -100,52 +105,50 @@ class MainWindow(Ui_MainWindow):
         self.addWindow.exec()
 
 
-class GeometryView(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.view = Qt3DWindow()
-        self.window = self.createWindowContainer(self.view)
-        camera = self.view.camera()
-        camera.setPosition(QVector3D(0, 0, 0))
-        camera.setViewCenter(QVector3D(0.0, 0.0, 0.0))
-
-        self.rootEntity = QEntity()
-        self.camController = QFirstPersonCameraController(self.rootEntity)
-        self.camController.setCamera(camera)
-        self.view.setRootEntity(self.rootEntity)
-
-
 class ComponentDetailsDialog(Ui_ComponentDetailsDialog):
-    def __init__(self):
+    def __init__(self, entry_group):
         super().__init__()
         self.component_name = False
+        self.component_type = False
         self.geometry_type = False
         self.pixel_type = False
+        self.entry_group = entry_group
 
     def setupUi(self, ComponentDetailsDialog):
         super().setupUi(ComponentDetailsDialog)
         self.buttonBox.rejected.connect(self.set_defaults)
         self.buttonBox.accepted.connect(self.add_component)
 
-    def create_delegates(self, component_name, geometry_type, pixel_type):
-        self.component_name = component_name
+    def closeEvent(self, event):
+        print("window closed")
+        # doesn't seem to be working, no idea why.
+        self.set_defaults()
+
+    def create_delegates(self, component_type, geometry_type, pixel_type):
+        self.component_type = component_type
         self.geometry_type = geometry_type
         self.pixel_type = pixel_type
-        if self.geometry_type == "Mesh":
-            self.GeometryFileBox.setVisible(True)
         if self.geometry_type == "Cylinder":
-            self.CylinderGeometryBox.setVisible(True)
+            self.GeometryFileBox.setVisible(False)
+        if self.geometry_type == "Mesh":
+            self.CylinderGeometryBox.setVisible(False)
+        else:
+            self.CylinderGeometryBox.setVisible(False)
+            self.GeometryFileBox.setVisible(False)
 
     def set_defaults(self):
-        pass
+        self.CylinderGeometryBox.setVisible(True)
+        self.GeometryFileBox.setVisible(True)
 
     def add_component(self):
-        pass
+        component_name = str(self.lineEdit_2.text())
+        self.entry_group.create_group(name=component_name)
 
 
 class AddComponentDialog(Ui_AddComponentDialog):
-    def __init__(self):
+    def __init__(self, group):
         super().__init__()
+        self.entry_group = group
 
     def setupUi(self, add_component_window):
         super().setupUi(add_component_window)
@@ -153,7 +156,7 @@ class AddComponentDialog(Ui_AddComponentDialog):
 
         self.populate_components_box()
         self.details = QDialog()
-        self.details.ui = ComponentDetailsDialog()
+        self.details.ui = ComponentDetailsDialog(self.entry_group)
         self.details.ui.setupUi(self.details)
 
     def populate_components_box(self):
