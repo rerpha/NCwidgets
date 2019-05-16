@@ -42,14 +42,6 @@ class MainWindow(Ui_MainWindow):
         self.actionExport_to_Filewriter_JSON.triggered.connect(
             self.save_to_filewriter_json
         )
-        self.actionHide_JSON_Pane.triggered.connect(self.hide_json_pane)
-        self.actionShow_Filewriter_JSON.triggered.connect(self.show_json_pane)
-
-    def hide_json_pane(self):
-        self.listWidget.setVisible(False)
-
-    def show_json_pane(self):
-        self.listWidget.setVisible(True)
 
     def save_to_nexus_file(self):
         options = QFileDialog.Options()
