@@ -1,5 +1,6 @@
 import sys
 import h5py
+from PySide2.QtGui import QStandardItemModel, QStandardItem
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
 from PySide2 import QtCore
 from ui.mainwindow import Ui_MainWindow
@@ -21,6 +22,8 @@ class MainWindow(Ui_MainWindow):
         self.nexus_file = set_up_in_memory_nexus_file()
         self.entry_group = self.nexus_file.create_group("entry")
         self.entry_group.attrs["NX_class"] = "NXentry"
+        self.instrument_group = self.entry_group.create_group("/instrument")
+        self.instrument_group.attrs["NX_class"] = "NXinstrument"
 
     file_dialog_native = QFileDialog.DontUseNativeDialog
 
@@ -37,6 +40,25 @@ class MainWindow(Ui_MainWindow):
         self.actionExport_to_Filewriter_JSON.triggered.connect(
             self.save_to_filewriter_json
         )
+        model = QStandardItemModel()
+        foods = [
+            "Cookie dough",  # Must be store-bought
+            "Hummus",  # Must be homemade
+            "Spaghetti",  # Must be saucy
+            "Dal makhani",  # Must be spicy
+            "Chocolate whipped cream",  # Must be plentiful
+        ]
+
+        for food in foods:
+            # Create an item with a caption
+            item = QStandardItem(food)
+
+            # Add a checkbox to it
+            item.setCheckable(True)
+
+            # Add the item to the model
+            model.appendRow(item)
+        self.listView.setModel(model)
 
     def save_to_nexus_file(self):
         options = QFileDialog.Options()
