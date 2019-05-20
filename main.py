@@ -129,7 +129,8 @@ class ComponentDetailsDialog(Ui_ComponentDetailsDialog):
 
     def add_component(self):
         component_name = str(self.componentNameField.text())
-        self.entry_group.create_group(name=component_name)
+        group = self.entry_group.create_group(name=component_name)
+        group.attrs["NX_class"] = component_names[self.component_type]
         # TODO: close the dialog
 
 
