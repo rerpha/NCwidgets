@@ -1,6 +1,6 @@
 from main import MainWindow, QMainWindow
 from pytestqt import qtbot
-from PyQt5 import QtCore
+from PySide2 import QtCore
 
 
 def test_main_window_title(qtbot):
