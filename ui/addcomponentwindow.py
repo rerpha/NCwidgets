@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'addcomponentwindow.ui'
+# Form implementation generated from reading ui file 'addcomponentwindow.ui',
+# licensing of 'addcomponentwindow.ui' applies.
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created: Mon May 20 07:43:52 2019
+#      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PySide2 import QtCore, QtGui, QtWidgets
 
 class Ui_AddComponentDialog(object):
     def setupUi(self, AddComponentDialog):
@@ -62,22 +63,20 @@ class Ui_AddComponentDialog(object):
 
         self.retranslateUi(AddComponentDialog)
         self.ComponentTypeComboBox.setCurrentIndex(-1)
-        self.buttonBox.accepted.connect(AddComponentDialog.accept)
-        self.buttonBox.rejected.connect(AddComponentDialog.reject)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), AddComponentDialog.accept)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), AddComponentDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(AddComponentDialog)
 
     def retranslateUi(self, AddComponentDialog):
-        _translate = QtCore.QCoreApplication.translate
-        AddComponentDialog.setWindowTitle(_translate("AddComponentDialog", "Add Component"))
-        self.label_2.setText(_translate("AddComponentDialog", "Geometry type: "))
-        self.GeometryTypeComboBox.setItemText(0, _translate("AddComponentDialog", "Mesh"))
-        self.GeometryTypeComboBox.setItemText(1, _translate("AddComponentDialog", "Cylinder"))
-        self.GeometryTypeComboBox.setItemText(2, _translate("AddComponentDialog", "None"))
-        self.PixelTypeComboBox.setItemText(0, _translate("AddComponentDialog", "Single ID"))
-        self.PixelTypeComboBox.setItemText(1, _translate("AddComponentDialog", "Repeatable Grid"))
-        self.PixelTypeComboBox.setItemText(2, _translate("AddComponentDialog", "Face Mapped Mesh"))
-        self.PixelTypeComboBox.setItemText(3, _translate("AddComponentDialog", "None"))
-        self.label_3.setText(_translate("AddComponentDialog", "Pixel Type: "))
-        self.label.setText(_translate("AddComponentDialog", "Component Type: "))
-
+        AddComponentDialog.setWindowTitle(QtWidgets.QApplication.translate("AddComponentDialog", "Add Component", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("AddComponentDialog", "Geometry type: ", None, -1))
+        self.GeometryTypeComboBox.setItemText(0, QtWidgets.QApplication.translate("AddComponentDialog", "Mesh", None, -1))
+        self.GeometryTypeComboBox.setItemText(1, QtWidgets.QApplication.translate("AddComponentDialog", "Cylinder", None, -1))
+        self.GeometryTypeComboBox.setItemText(2, QtWidgets.QApplication.translate("AddComponentDialog", "None", None, -1))
+        self.PixelTypeComboBox.setItemText(0, QtWidgets.QApplication.translate("AddComponentDialog", "Single ID", None, -1))
+        self.PixelTypeComboBox.setItemText(1, QtWidgets.QApplication.translate("AddComponentDialog", "Repeatable Grid", None, -1))
+        self.PixelTypeComboBox.setItemText(2, QtWidgets.QApplication.translate("AddComponentDialog", "Face Mapped Mesh", None, -1))
+        self.PixelTypeComboBox.setItemText(3, QtWidgets.QApplication.translate("AddComponentDialog", "None", None, -1))
+        self.label_3.setText(QtWidgets.QApplication.translate("AddComponentDialog", "Pixel Type: ", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("AddComponentDialog", "Component Type: ", None, -1))
 

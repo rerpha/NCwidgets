@@ -1,16 +1,11 @@
 import sys
 import h5py
-from PyQt5.QtCore import QUrl
-from PyQt5.QtGui import QVector3D
-from PyQt5.QtQuickWidgets import QQuickWidget
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog, QWidget
-from PyQt5 import QtCore
+from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QFileDialog
+from PySide2 import QtCore
 from ui.mainwindow import Ui_MainWindow
 from ui.componentdetails import Ui_ComponentDetailsDialog
 from ui.addcomponentwindow import Ui_AddComponentDialog
 from uuid import uuid4
-from PyQt5.Qt3DExtras import Qt3DWindow, QFirstPersonCameraController
-from PyQt5.Qt3DCore import QEntity
 from component_names import component_names
 
 NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
@@ -176,4 +171,4 @@ if __name__ == "__main__":
     ui = MainWindow()
     ui.setupUi(window)
     window.show()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())

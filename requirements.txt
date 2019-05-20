@@ -1,6 +1,4 @@
-PyQt5==5.12.2
-PyQt5-stubs
-PyQt3D
+PySide2
 h5py
 bidict
 
@@ -10,6 +8,3 @@ black
 # Testing
 pytest
 pytest-qt
-
-# Freezing + Installers
-fbs

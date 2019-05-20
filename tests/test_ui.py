@@ -11,6 +11,7 @@ def test_main_window_title(qtbot):
 
 
 def test_add_component_window_title(qtbot):
+    # TODO: get this working
     main = MainWindow()
     window = QMainWindow()
     main.setupUi(window)

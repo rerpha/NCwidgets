@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'componentdetails.ui'
+# Form implementation generated from reading ui file 'componentdetails.ui',
+# licensing of 'componentdetails.ui' applies.
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created: Mon May 20 07:44:07 2019
+#      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PySide2 import QtCore, QtGui, QtWidgets
 
 class Ui_ComponentDetailsDialog(object):
     def setupUi(self, ComponentDetailsDialog):
@@ -82,14 +83,12 @@ class Ui_ComponentDetailsDialog(object):
         QtCore.QMetaObject.connectSlotsByName(ComponentDetailsDialog)
 
     def retranslateUi(self, ComponentDetailsDialog):
-        _translate = QtCore.QCoreApplication.translate
-        ComponentDetailsDialog.setWindowTitle(_translate("ComponentDetailsDialog", "Component details"))
-        self.label.setText(_translate("ComponentDetailsDialog", "Name: "))
-        self.label_2.setText(_translate("ComponentDetailsDialog", "Description: "))
-        self.TransformsBox.setTitle(_translate("ComponentDetailsDialog", "Transforms:"))
-        self.GeometryFileBox.setTitle(_translate("ComponentDetailsDialog", "Geometry file:"))
-        self.geometryfilebrowse.setText(_translate("ComponentDetailsDialog", "Browse"))
-        self.CylinderGeometryBox.setTitle(_translate("ComponentDetailsDialog", "Cylinder Geometry:"))
-        self.groupBox.setTitle(_translate("ComponentDetailsDialog", "Pixel Data:"))
-
+        ComponentDetailsDialog.setWindowTitle(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Component details", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Name: ", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Description: ", None, -1))
+        self.TransformsBox.setTitle(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Transforms:", None, -1))
+        self.GeometryFileBox.setTitle(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Geometry file:", None, -1))
+        self.geometryfilebrowse.setText(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Browse", None, -1))
+        self.CylinderGeometryBox.setTitle(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Cylinder Geometry:", None, -1))
+        self.groupBox.setTitle(QtWidgets.QApplication.translate("ComponentDetailsDialog", "Pixel Data:", None, -1))
 
