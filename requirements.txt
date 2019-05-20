@@ -1,6 +1,7 @@
 PySide2
 h5py
 bidict
+silx
 
 # Formatting/linting
 black

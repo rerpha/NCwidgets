@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'mainwindow.ui',
 # licensing of 'mainwindow.ui' applies.
 #
-# Created: Mon May 20 07:43:41 2019
+# Created: Mon May 20 09:27:00 2019
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -16,14 +16,12 @@ class Ui_MainWindow(object):
         MainWindow.resize(1141, 599)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(6, 6, 1101, 531))
-        self.widget.setObjectName("widget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
+        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.tabWidget = QtWidgets.QTabWidget(self.widget)
+        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -36,15 +34,15 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
-        self.listView = QtWidgets.QListView(self.verticalLayoutWidget)
-        self.listView.setObjectName("listView")
-        self.verticalLayout.addWidget(self.listView)
+        self.widget = QtWidgets.QWidget(self.verticalLayoutWidget)
+        self.widget.setObjectName("widget")
+        self.verticalLayout.addWidget(self.widget)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.tabWidget.addTab(self.tab_2, "")
         self.horizontalLayout.addWidget(self.tabWidget)
-        self.quickWidget = QtQuickWidgets.QQuickWidget(self.widget)
+        self.quickWidget = QtQuickWidgets.QQuickWidget(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -55,6 +53,7 @@ class Ui_MainWindow(object):
         self.quickWidget.setSource(QtCore.QUrl("file:./view.qml"))
         self.quickWidget.setObjectName("quickWidget")
         self.horizontalLayout.addWidget(self.quickWidget)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1141, 19))
@@ -95,4 +94,3 @@ class Ui_MainWindow(object):
         self.actionOpen_NeXus_file.setText(QtWidgets.QApplication.translate("MainWindow", "Open NeXus file", None, -1))
         self.actionExport_to_NeXus_file.setText(QtWidgets.QApplication.translate("MainWindow", "Export to NeXus file", None, -1))
         self.actionExport_to_Filewriter_JSON.setText(QtWidgets.QApplication.translate("MainWindow", "Export to Filewriter JSON", None, -1))
-

@@ -8,6 +8,7 @@ from ui.componentdetails import Ui_ComponentDetailsDialog
 from ui.addcomponentwindow import Ui_AddComponentDialog
 from uuid import uuid4
 from component_names import component_names
+import silx.gui.hdf5
 
 NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
 
@@ -40,25 +41,12 @@ class MainWindow(Ui_MainWindow):
         self.actionExport_to_Filewriter_JSON.triggered.connect(
             self.save_to_filewriter_json
         )
-        model = QStandardItemModel()
-        foods = [
-            "Cookie dough",  # Must be store-bought
-            "Hummus",  # Must be homemade
-            "Spaghetti",  # Must be saucy
-            "Dal makhani",  # Must be spicy
-            "Chocolate whipped cream",  # Must be plentiful
-        ]
 
-        for food in foods:
-            # Create an item with a caption
-            item = QStandardItem(food)
+        self.widget = silx.gui.hdf5.Hdf5TreeView()
+        self.widget.findHdf5TreeModel().insertH5pyObject(self.nexus_file)
+        self.verticalLayout.addWidget(self.widget)
 
-            # Add a checkbox to it
-            item.setCheckable(True)
-
-            # Add the item to the model
-            model.appendRow(item)
-        self.listView.setModel(model)
+        self.widget.setVisible(True)
 
     def save_to_nexus_file(self):
         options = QFileDialog.Options()
