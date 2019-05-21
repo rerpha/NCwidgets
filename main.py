@@ -23,7 +23,7 @@ class MainWindow(Ui_MainWindow):
         self.nexus_file = set_up_in_memory_nexus_file()
         self.entry_group = self.nexus_file.create_group("entry")
         self.entry_group.attrs["NX_class"] = "NXentry"
-        self.instrument_group = self.entry_group.create_group("/instrument")
+        self.instrument_group = self.entry_group.create_group("instrument")
         self.instrument_group.attrs["NX_class"] = "NXinstrument"
 
     file_dialog_native = QFileDialog.DontUseNativeDialog
