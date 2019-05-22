@@ -14,7 +14,7 @@ NEXUS_FILE_TYPES = "NeXus Files (*.nxs,*.nex,*.nx5)"
 
 
 def set_up_in_memory_nexus_file():
-    return h5py.File(str(uuid4()), mode="w", driver="core", backing_store=False)
+    return h5py.File(str(uuid4()), mode="x", driver="core", backing_store=False)
 
 
 class MainWindow(Ui_MainWindow):
@@ -43,7 +43,12 @@ class MainWindow(Ui_MainWindow):
         )
 
         self.widget = silx.gui.hdf5.Hdf5TreeView()
-        self.widget.findHdf5TreeModel().insertH5pyObject(self.nexus_file)
+        self.widget.setAcceptDrops(True)
+        self.widget.setDragEnabled(True)
+        self.treemodel  = self.widget.findHdf5TreeModel()
+        self.treemodel.insertH5pyObject(self.nexus_file)
+        self.treemodel.setDatasetDragEnabled(True)
+        self.treemodel.setFileDropEnabled(True)
         self.verticalLayout.addWidget(self.widget)
 
         self.widget.setVisible(True)
