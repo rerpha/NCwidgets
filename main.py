@@ -45,7 +45,7 @@ class MainWindow(Ui_MainWindow):
         self.widget = silx.gui.hdf5.Hdf5TreeView()
         self.widget.setAcceptDrops(True)
         self.widget.setDragEnabled(True)
-        self.treemodel  = self.widget.findHdf5TreeModel()
+        self.treemodel = self.widget.findHdf5TreeModel()
         self.treemodel.insertH5pyObject(self.nexus_file)
         self.treemodel.setDatasetDragEnabled(True)
         self.treemodel.setFileDropEnabled(True)
@@ -101,6 +101,8 @@ class MainWindow(Ui_MainWindow):
             self.nexus_file = h5py.File(
                 fileName, mode="r", backing_store=False, driver="core"
             )
+            self.widget.findHdf5TreeModel().clear()
+            self.widget.findHdf5TreeModel().insertH5pyObject(self.nexus_file)
             print("NeXus file loaded")
 
     def show_add_component_window(self):
